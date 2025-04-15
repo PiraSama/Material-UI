@@ -14,7 +14,7 @@ npm i
 npm run dev
 ```
 #Giao diện ban đầu
-![alt text](giaodienbandau1.png)
-![alt text](metiral2.png)
-![alt text](metiral 3.png)
+![alt text](bandau1.png)
+![alt text](bandau2.png)
+![alt text](bandau3.png)
 
