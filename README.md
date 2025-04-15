@@ -13,3 +13,8 @@ yarn dev
 npm i
 npm run dev
 ```
+#Giao diện ban đầu
+![alt text](metiral 1)
+![alt text](metiral2)
+![alt text](metiral 3)
+
