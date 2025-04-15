@@ -14,7 +14,7 @@ npm i
 npm run dev
 ```
 #Giao diện ban đầu
-![alt text](metiral 1)
-![alt text](metiral2)
-![alt text](metiral 3)
+![alt text](metiral 1.png)
+![alt text](metiral2.png)
+![alt text](metiral 3.png)
 
