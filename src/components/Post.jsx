@@ -75,52 +75,97 @@ export default function Post({ caption, img, like, comment, view, share }) {
             sx={{ borderRadius: "25px" }}
           />
         </Box>
-        <CardActions disableSpacing sx={{ display: "flex", gap: "60px" }}>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <IconButton aria-label="add to favorites" onClick={handleLike}>
-              {isLiked ? (
-                <FavoriteIcon
-                  sx={{ fontSize: "20px", color: "#FF0000" }}
-                />
-              ) : (
-                <FavoriteBorderOutlinedIcon
-                  sx={{ fontSize: "20px", color: "#808080" }}
-                />
-              )}
-            </IconButton>
-            <Typography variant="body2" color="#808080">
-              {likes}K
-            </Typography>
-          </Box>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <IconButton aria-label="comment">
-              <ChatBubbleOutlineOutlinedIcon
-                sx={{ fontSize: "20px", color: "#808080" }}
-              />
-            </IconButton>
-            <Typography variant="body2" color="#808080">
-              {comment}K
-            </Typography>
-          </Box>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <IconButton aria-label="trending view">
-              <TrendingUpOutlinedIcon
-                sx={{ fontSize: "20px", color: "#808080" }}
-              />
-            </IconButton>
-            <Typography variant="body2" color="#808080">
-              {view}M
-            </Typography>
-          </Box>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <IconButton aria-label="share">
-              <ShareOutlinedIcon sx={{ fontSize: "20px", color: "#808080" }} />
-            </IconButton>
-            <Typography variant="body2" color="#808080">
-              {share}K
-            </Typography>
-          </Box>
-        </CardActions>
+        <CardActions disableSpacing sx={{ display: "flex", gap: "60px", mt: 1 }}>
+  {/* Like Button */}
+  <Box sx={{ display: "flex", alignItems: "center" }}>
+    <IconButton
+      aria-label="add to favorites"
+      onClick={handleLike}
+      sx={{
+        backgroundColor: isLiked ? "#ffe6e6" : "transparent",
+        "&:hover": {
+          backgroundColor: "#ffebeb",
+        },
+        borderRadius: "50%",
+        p: 1,
+        transition: "all 0.2s ease-in-out",
+      }}
+    >
+      {isLiked ? (
+        <FavoriteIcon sx={{ fontSize: "22px", color: "#e53935" }} />
+      ) : (
+        <FavoriteBorderOutlinedIcon sx={{ fontSize: "22px", color: "#aaa" }} />
+      )}
+    </IconButton>
+    <Typography variant="body2" color="#aaa" sx={{ ml: 0.5 }}>
+      {likes}K
+    </Typography>
+  </Box>
+
+  {/* Comment Button */}
+  <Box sx={{ display: "flex", alignItems: "center" }}>
+    <IconButton
+      aria-label="comment"
+      sx={{
+        backgroundColor: "transparent",
+        "&:hover": {
+          backgroundColor: "#2a2a2a",
+        },
+        borderRadius: "50%",
+        p: 1,
+        transition: "all 0.2s ease-in-out",
+      }}
+    >
+      <ChatBubbleOutlineOutlinedIcon sx={{ fontSize: "22px", color: "#aaa" }} />
+    </IconButton>
+    <Typography variant="body2" color="#aaa" sx={{ ml: 0.5 }}>
+      {comment}K
+    </Typography>
+  </Box>
+
+  {/* View Button */}
+  <Box sx={{ display: "flex", alignItems: "center" }}>
+    <IconButton
+      aria-label="trending view"
+      sx={{
+        backgroundColor: "transparent",
+        "&:hover": {
+          backgroundColor: "#2a2a2a",
+        },
+        borderRadius: "50%",
+        p: 1,
+        transition: "all 0.2s ease-in-out",
+      }}
+    >
+      <TrendingUpOutlinedIcon sx={{ fontSize: "22px", color: "#aaa" }} />
+    </IconButton>
+    <Typography variant="body2" color="#aaa" sx={{ ml: 0.5 }}>
+      {view}M
+    </Typography>
+  </Box>
+
+  {/* Share Button */}
+  <Box sx={{ display: "flex", alignItems: "center" }}>
+    <IconButton
+      aria-label="share"
+      sx={{
+        backgroundColor: "transparent",
+        "&:hover": {
+          backgroundColor: "#2a2a2a",
+        },
+        borderRadius: "50%",
+        p: 1,
+        transition: "all 0.2s ease-in-out",
+      }}
+    >
+      <ShareOutlinedIcon sx={{ fontSize: "22px", color: "#aaa" }} />
+    </IconButton>
+    <Typography variant="body2" color="#aaa" sx={{ ml: 0.5 }}>
+      {share}K
+    </Typography>
+  </Box>
+</CardActions>
+
       </Box>
     </Card>
   );

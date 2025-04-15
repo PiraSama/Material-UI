@@ -77,63 +77,70 @@ const Suggestions = () => {
         </Typography>
       </Box>
 
-      <List sx={{ width: "300px" }}>
-        {suggestedUsers.map((user) => (
-          <ListItem
-            key={user.id}
+      <List sx={{ width: "100%", gap: 1, display: "flex", flexDirection: "column" }}>
+  {suggestedUsers.map((user) => (
+    <ListItem
+      key={user.id}
+      sx={{
+        px: 1,
+        py: 1,
+        borderRadius: "12px",
+        transition: "background 0.2s ease",
+        "&:hover": {
+          backgroundColor: "#2a2a2a",
+        },
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+      }}
+    >
+      <Box sx={{ display: "flex", alignItems: "center", gap: 1.2 }}>
+        <Avatar src={user.avatar} sx={{ width: 44, height: 44 }} />
+        <Box>
+          <Typography
+            variant="body2"
             sx={{
-              px: 0,
-              "&:hover": {
-                backgroundColor: "#393939",
-              },
+              fontWeight: 600,
+              color: "#f5f5f5",
+              fontSize: "0.92rem",
             }}
           >
-            <ListItemAvatar>
-              <Avatar src={user.avatar} sx={{ width: 40, height: 40 }} />
-            </ListItemAvatar>
-            <ListItemText
-              primary={
-                <Typography
-                  variant="body2"
-                  sx={{
-                    fontWeight: "bold",
-                    fontSize: "0.9rem",
-                    color: "#f5f5f5",
-                  }}
-                >
-                  {user.name}
-                </Typography>
-              }
-              secondary={
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ fontSize: "0.8rem", color: "#808080" }}
-                >
-                  {user.username}
-                </Typography>
-              }
-            />
-            <ListItemSecondaryAction>
-              <Button
-                variant="contained"
-                size="small"
-                sx={{
-                  color: following[user.id] ? "text.secondary" : "#0a0a0a",
-                  textTransform: "none",
-                  fontWeight: "bold",
-                  fontSize: "0.8rem",
-                  backgroundColor: "#f5f5f5",
-                  borderRadius: "25px",
-                }}
-                onClick={() => handleFollow(user.id)}
-              >
-                {following[user.id] ? "Đã theo dõi" : "Theo dõi"}
-              </Button>
-            </ListItemSecondaryAction>
-          </ListItem>
-        ))}
-      </List>
+            {user.name}
+          </Typography>
+          <Typography
+            variant="caption"
+            sx={{ color: "#888", fontSize: "0.78rem" }}
+          >
+            {user.username}
+          </Typography>
+        </Box>
+      </Box>
+
+      <Button
+        variant="contained"
+        size="small"
+        sx={{
+          textTransform: "none",
+          fontWeight: "bold",
+          fontSize: "0.78rem",
+          px: 2,
+          py: 0.5,
+          borderRadius: "25px",
+          backgroundColor: following[user.id] ? "#262626" : "#f5f5f5",
+          color: following[user.id] ? "#aaa" : "#0a0a0a",
+          boxShadow: "none",
+          "&:hover": {
+            backgroundColor: following[user.id] ? "#393939" : "#e0e0e0",
+          },
+        }}
+        onClick={() => handleFollow(user.id)}
+      >
+        {following[user.id] ? "Đã theo dõi" : "Theo dõi"}
+      </Button>
+    </ListItem>
+  ))}
+</List>
+
     </Box>
   );
 };

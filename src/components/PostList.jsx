@@ -6,7 +6,6 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogContentText,
   TextField,
   DialogActions,
 } from "@mui/material";
@@ -15,8 +14,7 @@ import Post from "./Post";
 
 const postItem = [
   {
-    caption:
-      "This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.",
+    caption: "Cùng nhau nấu paella cực chill cho buổi tối cuối tuần!",
     img: "https://images.unsplash.com/photo-1742268350523-70a032f3520d?q=80&w=1968&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     like: 184,
     comment: 10,
@@ -24,8 +22,7 @@ const postItem = [
     share: 24,
   },
   {
-    caption:
-      "This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.",
+    caption: "Bữa tối ấm cúng với bạn bè 🥘✨",
     img: "https://images.unsplash.com/photo-1742412615574-ce65e63598d8?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=m3wxmja3fdb8mhxwag90by1wywdlfhx8fgvufdb8fhx8fa%3d%3d",
     like: 100,
     comment: 5,
@@ -33,8 +30,7 @@ const postItem = [
     share: 14,
   },
   {
-    caption:
-      "This impressive paella is a perfect party dish and a fun meal to cook together with your guests. add 1 cup of frozen peas along with the mussels, if you like.",
+    caption: "Bữa ăn đơn giản nhưng đầy yêu thương.",
     img: "https://images.unsplash.com/photo-1742435456486-3a0059c05e38?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     like: 20,
     comment: 1,
@@ -45,13 +41,9 @@ const postItem = [
 
 export const PostList = () => {
   const [open, setOpen] = useState(false);
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleClickOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <Box
@@ -60,15 +52,16 @@ export const PostList = () => {
         display: "flex",
         flexDirection: "column",
         gap: "20px",
-        marginLeft: "auto",
-        marginRight: "auto",
+        margin: "0 auto",
+        padding: "20px 0",
       }}
     >
+      {/* Tạo bài viết */}
       <Box
         sx={{
           width: "100%",
           bgcolor: "#16181C",
-          borderRadius: "50px",
+          borderRadius: "25px",
           padding: "16px",
         }}
       >
@@ -81,16 +74,22 @@ export const PostList = () => {
         >
           <Box sx={{ display: "flex", alignItems: "center", gap: "16px" }}>
             <Avatar
-              src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3"
               alt="User Avatar"
             />
             <Typography
               variant="body1"
               color="#808080"
-              fontWeight={"600"}
+              fontWeight="600"
+              sx={{
+                cursor: "pointer",
+                "&:hover": {
+                  textDecoration: "underline",
+                },
+              }}
               onClick={handleClickOpen}
             >
-              Bắt đầu nimbus...
+              Bắt đầu viết gì đó...
             </Typography>
           </Box>
           <Button
@@ -98,69 +97,98 @@ export const PostList = () => {
             sx={{
               backgroundColor: "#6EC207",
               color: "#f5f5f5",
-              borderRadius: "25px",
+              borderRadius: "20px",
+              textTransform: "none",
+              px: 3,
+              "&:hover": {
+                backgroundColor: "#5aaa06",
+              },
             }}
+            onClick={handleClickOpen}
           >
             Đăng
           </Button>
         </Box>
       </Box>
 
+      {/* Hộp thoại tạo bài viết */}
       <Dialog open={open} onClose={handleClose}>
         <Box
-          sx={{ backgroundColor: "#16181c", width: "400px" }}
+          sx={{
+            backgroundColor: "#16181c",
+            width: "400px",
+            paddingBottom: "12px",
+          }}
           component="form"
         >
-          <DialogTitle color="#f5f5f5">Create new</DialogTitle>
+          <DialogTitle sx={{ color: "#f5f5f5", fontWeight: "bold" }}>
+            Tạo bài viết mới
+          </DialogTitle>
           <DialogContent>
             <TextField
-              label="What's new?"
+              label="Bạn đang nghĩ gì?"
               name="content"
               fullWidth
               multiline
               rows={3}
+              autoFocus
               sx={{
-                marginTop: "16px",
+                marginTop: "8px",
                 "& .MuiInputBase-root": {
-                  color: "#f5f5f5", // Text color
+                  color: "#f5f5f5",
                 },
                 "& .MuiInputLabel-root": {
-                  color: "#808080", // Label color
+                  color: "#808080",
                 },
                 "& .MuiOutlinedInput-root": {
                   "& fieldset": {
-                    borderColor: "#808080", // Border color
+                    borderColor: "#333",
                   },
                   "&:hover fieldset": {
-                    borderColor: "#f5f5f5", // Hover border color
+                    borderColor: "#6EC207",
                   },
                   "&.Mui-focused fieldset": {
-                    borderColor: "#f5f5f5", // Focused border color
+                    borderColor: "#6EC207",
                   },
                 },
               }}
             />
           </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button type="submit">Post</Button>
+          <DialogActions sx={{ padding: "0 24px" }}>
+            <Button onClick={handleClose} sx={{ color: "#808080" }}>
+              Hủy
+            </Button>
+            <Button
+              type="submit"
+              sx={{
+                backgroundColor: "#6EC207",
+                color: "#f5f5f5",
+                textTransform: "none",
+                px: 3,
+                borderRadius: "20px",
+                "&:hover": {
+                  backgroundColor: "#5aaa06",
+                },
+              }}
+            >
+              Đăng bài
+            </Button>
           </DialogActions>
         </Box>
       </Dialog>
 
-      {postItem.map((item, index) => {
-        return (
-          <Post
-            key={index}
-            caption={item.caption}
-            img={item.img}
-            like={item.like}
-            comment={item.comment}
-            view={item.view}
-            share={item.share}
-          />
-        );
-      })}
+      {/* Danh sách bài viết */}
+      {postItem.map((item, index) => (
+        <Post
+          key={index}
+          caption={item.caption}
+          img={item.img}
+          like={item.like}
+          comment={item.comment}
+          view={item.view}
+          share={item.share}
+        />
+      ))}
     </Box>
   );
 };
