@@ -18,3 +18,9 @@ npm run dev
 ![alt text](bandau2.png)
 ![alt text](bandau3.png)
 
+#Giao diện sau khi tùy chỉnh 
+![alt text](thaydoi1.png)
+![alt text](thaydoi2.png)
+![alt text](thaydoi3.png)
+
+
